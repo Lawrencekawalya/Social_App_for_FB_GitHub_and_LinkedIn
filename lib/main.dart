@@ -10,6 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const MyApp({Key? key});
 
   @override
@@ -47,7 +48,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
     if (pickedImage != null) {
       final imageFile = File(pickedImage.path);
       final appDir = await getApplicationDocumentsDirectory();
-      const imageName = 'profile_image.jpg';
+      final imageName = 'profile_image.jpg';
       final imagePath = '${appDir.path}/$imageName';
       await imageFile.copy(imagePath);
 
