@@ -20,12 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const MyFirstPage(),
-        '/academics': (context) => const AcademicsPage(),
-        '/profile': (context) => const ProfilePage(),
-      },
+      home: const MyFirstPage(),
     );
   }
 }
@@ -58,15 +53,6 @@ class _MyFirstPageState extends State<MyFirstPage> {
         _image = imageFile;
       });
     }
-  }
-
-  Future<void> _removeImage() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.remove('imagePath');
-
-    setState(() {
-      _image = null;
-    });
   }
 
   Future<void> _loadSavedImage() async {
@@ -142,25 +128,13 @@ class _MyFirstPageState extends State<MyFirstPage> {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
+            const Padding(
+              padding: EdgeInsets.all(20.0),
               child: SingleChildScrollView(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.collections_bookmark),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/academics');
-                      },
-                    ),
-                    const SizedBox(width: 30.0),
-                    IconButton(
-                      icon: const Icon(Icons.lock_person),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/profile');
-                      },
-                    ),
+                    // Rest of your code
                   ],
                 ),
               ),
@@ -168,78 +142,18 @@ class _MyFirstPageState extends State<MyFirstPage> {
           ],
         ),
       ),
-      bottomNavigationBar: const NavigationBar(),
-    );
-  }
-}
-
-class AcademicsPage extends StatelessWidget {
-  const AcademicsPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.popUntil(context, ModalRoute.withName('/'));
-        return true;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Academics'),
-        ),
-        body: const Center(
-          child: Text('Academics Page'),
-        ),
+      bottomNavigationBar: NavigationBar(
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.collections_bookmark),
+            label: 'Academics',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.lock_person),
+            label: 'Profile',
+          ),
+        ],
       ),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        Navigator.popUntil(context, ModalRoute.withName('/'));
-        return true;
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Profile'),
-        ),
-        body: const Center(
-          child: Text('Profile Page'),
-        ),
-      ),
-    );
-  }
-}
-
-class NavigationBar extends StatelessWidget {
-  const NavigationBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.collections_bookmark),
-          label: 'Academics',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.lock_person),
-          label: 'Profile',
-        ),
-      ],
-      onTap: (index) {
-        if (index == 0) {
-          Navigator.pushNamed(context, '/academics');
-        } else if (index == 1) {
-          Navigator.pushNamed(context, '/profile');
-        }
-      },
     );
   }
 }
