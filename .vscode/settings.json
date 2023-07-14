@@ -9,5 +9,6 @@
     "Lato",
     "prefs",
     "Schyler"
-  ]
+  ],
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
