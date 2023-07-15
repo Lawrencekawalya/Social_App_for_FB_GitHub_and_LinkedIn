@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -118,99 +119,140 @@ class _MyFirstPageState extends State<MyFirstPage> {
           )
         ],
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 20.0),
-            GestureDetector(
-              onTap: _pickImage,
-              child: CircleAvatar(
-                backgroundImage: _image != null ? FileImage(_image!) : null,
-                radius: 80.0,
-              ),
-            ),
-            const SizedBox(height: 10.0),
-            const Text(
-              "Lawrence Kawalya",
-              style: TextStyle(
-                color: Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.bold,
-                fontSize: 30.0,
-              ),
-            ),
-            const Text(
-              "Students of BSU",
-              style: TextStyle(
-                color: Color.fromARGB(255, 37, 227, 16),
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: SingleChildScrollView(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Center(
-                      child: Link(
-                        target: LinkTarget.self,
-                        uri: Uri.parse('https://www.facebook.com/'),
-                        builder: (context, followLink) => ElevatedButton(
-                          // onHover: ,
-                          onPressed: followLink,
-                          child: const Text(
-                            "Facebook",
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
+      body: LayoutBuilder(builder: (context, constraint) {
+        return Center(
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20.0),
+                  GestureDetector(
+                    onTap: _pickImage,
+                    child: CircleAvatar(
+                      backgroundImage: _image != null ? FileImage(_image!) : null,
+                      radius: 80.0,
                     ),
-                    const SizedBox(width: 30.0),
-                    Center(
-                      child: Link(
-                        target: LinkTarget.self,
-                        uri: Uri.parse('https://github.com/'),
-                        builder: (context, followLink) => ElevatedButton(
-                          onPressed: followLink,
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
-                          ),
-                          child: const Text(
-                            "GitHub",
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
+                  ),
+                  const SizedBox(height: 10.0),
+                  const Text(
+                    "Lawrence Kawalya",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
                     ),
-                    const SizedBox(width: 30.0),
-                    Center(
-                      child: Link(
-                        target: LinkTarget.self,
-                        uri: Uri.parse('https://www.linkedin.com/login/'),
-                        builder: (context, followLink) => ElevatedButton(
-                          onPressed: followLink,
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                              const Color.fromARGB(255, 39, 0, 100),
+                  ),
+                  const Text(
+                    "Students of BSU",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 37, 227, 16),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.0,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: SingleChildScrollView(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          //
+                          Center(
+                            child: Link(
+                              target: LinkTarget.self,
+                              uri: Uri.parse('https://www.linkedin.com/login/'),
+                              builder: (context, followLink) => ElevatedButton(
+                                onPressed: followLink,
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 39, 0, 100),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const FaIcon(FontAwesomeIcons.linkedin),
+                                    const SizedBox(width: 5.0),
+                                    if (constraint.maxWidth > 300)
+                                      const Text(
+                                        "Linked In",
+                                        style: TextStyle(fontSize: 12.0),
+                                      ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
-                          child: const Text(
-                            "Linked In",
-                            style: TextStyle(fontSize: 20.0),
+                          const SizedBox(width: 30.0),
+                          Center(
+                            child: Link(
+                              target: LinkTarget.self,
+                              uri: Uri.parse('https://www.facebook.com/'),
+                              builder: (context, followLink) => ElevatedButton(
+                                onPressed: followLink,
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 40, 144, 236),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const FaIcon(FontAwesomeIcons.facebook),
+                                    const SizedBox(width: 5.0),
+                                    if (constraint.maxWidth > 300)
+                                      const Text(
+                                        "Facebook",
+                                        style: TextStyle(fontSize: 12.0),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          const SizedBox(width: 30.0),
+                          Center(
+                            child: Link(
+                              target: LinkTarget.self,
+                              uri: Uri.parse('https://github.com/'),
+                              builder: (context, followLink) => ElevatedButton(
+                                onPressed: followLink,
+                                style: ButtonStyle(
+                                  backgroundColor: MaterialStateProperty.all(
+                                    const Color.fromARGB(255, 243, 171, 4),
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const FaIcon(
+                                      FontAwesomeIcons.github,
+                                      color: Colors.black,
+                                    ),
+                                    const SizedBox(width: 5.0),
+                                    if (constraint.maxWidth > 300)
+                                      const Text(
+                                        "Github",
+                                        style: TextStyle(fontSize: 12.0),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
-            )
-          ],
-        ),
-      ),
+            ],
+          ),
+        );
+      }),
       bottomNavigationBar: const NavigationBar(),
     );
   }

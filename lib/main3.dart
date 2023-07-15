@@ -1,9 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
+
+import 'package:url_launcher/link.dart';
 
 void main() {
   runApp(const MyApp());
@@ -146,25 +149,37 @@ class _MyFirstPageState extends State<MyFirstPage> {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
               child: SingleChildScrollView(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // IconButton(
-                    //   icon: const Icon(Icons.collections_bookmark),
-                    //   onPressed: () {
-                    //     Navigator.pushNamed(context, '/academics');
-                    //   },
-                    // ),
-                    // const SizedBox(width: 30.0),
-                    // IconButton(
-                    //   icon: const Icon(Icons.lock_person),
-                    //   onPressed: () {
-                    //     Navigator.pushNamed(context, '/profile');
-                    //   },
-                    // ),
+                    Center(
+                      child: Link(
+                        target: LinkTarget.self,
+                        uri: Uri.parse('https://www.linkedin.com/login/'),
+                        builder: (context, followLink) => ElevatedButton(
+                          onPressed: followLink,
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              const Color.fromARGB(255, 39, 0, 100),
+                            ),
+                          ),
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              FaIcon(FontAwesomeIcons.linkedin),
+                              SizedBox(width: 5.0),
+                              Text(
+                                "Linked In",
+                                style: TextStyle(fontSize: 20.0),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
