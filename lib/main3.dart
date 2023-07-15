@@ -5,8 +5,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 
-import 'package:url_launcher/link.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -140,7 +138,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
               ),
             ),
             const Text(
-              "Students of BSU",
+              "Student of BSU",
               style: TextStyle(
                 color: Color.fromARGB(255, 37, 227, 16),
                 fontWeight: FontWeight.bold,
@@ -148,62 +146,25 @@ class _MyFirstPageState extends State<MyFirstPage> {
                 fontStyle: FontStyle.italic,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
+            const Padding(
+              padding: EdgeInsets.all(20.0),
               child: SingleChildScrollView(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Center(
-                      child: Link(
-                        target: LinkTarget.self,
-                        uri: Uri.parse('https://www.facebook.com/'),
-                        builder: (context, followLink) => ElevatedButton(
-                          // onHover: ,
-                          onPressed: followLink,
-                          child: const Text(
-                            "Facebook",
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 30.0),
-                    Center(
-                      child: Link(
-                        target: LinkTarget.self,
-                        uri: Uri.parse('https://github.com/'),
-                        builder: (context, followLink) => ElevatedButton(
-                          onPressed: followLink,
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(Colors.deepOrange),
-                          ),
-                          child: const Text(
-                            "GitHub",
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 30.0),
-                    Center(
-                      child: Link(
-                        target: LinkTarget.self,
-                        uri: Uri.parse('https://www.linkedin.com/login/'),
-                        builder: (context, followLink) => ElevatedButton(
-                          onPressed: followLink,
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                              const Color.fromARGB(255, 39, 0, 100),
-                            ),
-                          ),
-                          child: const Text(
-                            "Linked In",
-                            style: TextStyle(fontSize: 20.0),
-                          ),
-                        ),
-                      ),
-                    )
+                    // IconButton(
+                    //   icon: const Icon(Icons.collections_bookmark),
+                    //   onPressed: () {
+                    //     Navigator.pushNamed(context, '/academics');
+                    //   },
+                    // ),
+                    // const SizedBox(width: 30.0),
+                    // IconButton(
+                    //   icon: const Icon(Icons.lock_person),
+                    //   onPressed: () {
+                    //     Navigator.pushNamed(context, '/profile');
+                    //   },
+                    // ),
                   ],
                 ),
               ),
