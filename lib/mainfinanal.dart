@@ -12,6 +12,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  // ignore: use_key_in_widget_constructors
   const MyApp({Key? key});
 
   @override
@@ -33,9 +34,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MyFirstPage extends StatefulWidget {
+  // ignore: use_key_in_widget_constructors
   const MyFirstPage({Key? key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyFirstPageState createState() => _MyFirstPageState();
 }
 

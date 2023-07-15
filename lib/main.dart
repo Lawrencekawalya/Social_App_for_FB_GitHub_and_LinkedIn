@@ -32,9 +32,11 @@ class MyApp extends StatelessWidget {
 }
 
 class MyFirstPage extends StatefulWidget {
+  // ignore: use_key_in_widget_constructors
   const MyFirstPage({Key? key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyFirstPageState createState() => _MyFirstPageState();
 }
 
@@ -48,7 +50,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
     if (pickedImage != null) {
       final imageFile = File(pickedImage.path);
       final appDir = await getApplicationDocumentsDirectory();
-      final imageName = 'profile_image.jpg';
+      const imageName = 'profile_image.jpg';
       final imagePath = '${appDir.path}/$imageName';
       await imageFile.copy(imagePath);
 
@@ -61,6 +63,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
     }
   }
 
+  // ignore: unused_element
   Future<void> _removeImage() async {
     final prefs = await SharedPreferences.getInstance();
     prefs.remove('imagePath');
