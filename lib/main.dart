@@ -237,33 +237,33 @@ class _MyFirstPageState extends State<MyFirstPage> {
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 20.0),
-                            Center(
-                              child: Link(
-                                target: LinkTarget.self,
-                                uri: Uri.parse('https://api.whatsapp.com/send?phone=123456789'), // Replace with your desired WhatsApp link
-                                builder: (context, followLink) => ElevatedButton(
-                                  onPressed: followLink,
-                                  style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                      const Color.fromARGB(255, 37, 211, 102),
-                                    ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const FaIcon(FontAwesomeIcons.whatsapp),
-                                      const SizedBox(width: 5.0),
-                                      if (constraint.maxWidth > 300)
-                                        const Text(
-                                          "WhatsApp",
-                                          style: TextStyle(fontSize: 12.0),
-                                        ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                            // const SizedBox(height: 20.0),
+                            // Center(
+                            //   child: Link(
+                            //     target: LinkTarget.self,
+                            //     uri: Uri.parse('https://api.whatsapp.com/send?phone=123456789'), // Replace with your desired WhatsApp link
+                            //     builder: (context, followLink) => ElevatedButton(
+                            //       onPressed: followLink,
+                            //       style: ButtonStyle(
+                            //         backgroundColor: MaterialStateProperty.all(
+                            //           const Color.fromARGB(255, 37, 211, 102),
+                            //         ),
+                            //       ),
+                            //       child: Row(
+                            //         mainAxisSize: MainAxisSize.min,
+                            //         children: [
+                            //           const FaIcon(FontAwesomeIcons.whatsapp),
+                            //           const SizedBox(width: 5.0),
+                            //           if (constraint.maxWidth > 300)
+                            //             const Text(
+                            //               "WhatsApp",
+                            //               style: TextStyle(fontSize: 12.0),
+                            //             ),
+                            //         ],
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
