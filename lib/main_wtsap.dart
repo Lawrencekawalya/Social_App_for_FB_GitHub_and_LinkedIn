@@ -66,6 +66,16 @@ class _MyFirstPageState extends State<MyFirstPage> {
     }
   }
 
+  // ignore: unused_element
+  Future<void> _removeImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.remove('imagePath');
+
+    setState(() {
+      _image = null;
+    });
+  }
+
   Future<void> _loadSavedImage() async {
     final prefs = await SharedPreferences.getInstance();
     final imagePath = prefs.getString('imagePath');
@@ -147,116 +157,86 @@ class _MyFirstPageState extends State<MyFirstPage> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: SingleChildScrollView(
-                        child: Column(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Center(
-                                  child: Link(
-                                    target: LinkTarget.self,
-                                    uri: Uri.parse('https://www.linkedin.com/login/'),
-                                    builder: (context, followLink) => ElevatedButton(
-                                      onPressed: followLink,
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                          const Color.fromARGB(255, 39, 0, 100),
-                                        ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          const FaIcon(FontAwesomeIcons.linkedin),
-                                          const SizedBox(width: 5.0),
-                                          if (constraint.maxWidth > 300)
-                                            const Text(
-                                              "Linked In",
-                                              style: TextStyle(fontSize: 12.0),
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 30.0),
-                                Center(
-                                  child: Link(
-                                    target: LinkTarget.self,
-                                    uri: Uri.parse('https://www.facebook.com/'),
-                                    builder: (context, followLink) => ElevatedButton(
-                                      onPressed: followLink,
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                          const Color.fromARGB(255, 40, 144, 236),
-                                        ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          const FaIcon(FontAwesomeIcons.facebook),
-                                          const SizedBox(width: 5.0),
-                                          if (constraint.maxWidth > 300)
-                                            const Text(
-                                              "Facebook",
-                                              style: TextStyle(fontSize: 12.0),
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 30.0),
-                                Center(
-                                  child: Link(
-                                    target: LinkTarget.self,
-                                    uri: Uri.parse('https://github.com/'),
-                                    builder: (context, followLink) => ElevatedButton(
-                                      onPressed: followLink,
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                          const Color.fromARGB(255, 243, 171, 4),
-                                        ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          const FaIcon(
-                                            FontAwesomeIcons.github,
-                                            color: Colors.black,
-                                          ),
-                                          const SizedBox(width: 5.0),
-                                          if (constraint.maxWidth > 300)
-                                            const Text(
-                                              "Github",
-                                              style: TextStyle(fontSize: 12.0),
-                                            ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 20.0),
+                            //
                             Center(
                               child: Link(
                                 target: LinkTarget.self,
-                                uri: Uri.parse('https://api.whatsapp.com/send?phone=123456789'), // Replace with your desired WhatsApp link
+                                uri: Uri.parse('https://www.linkedin.com/login/'),
                                 builder: (context, followLink) => ElevatedButton(
                                   onPressed: followLink,
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
-                                      const Color.fromARGB(255, 37, 211, 102),
+                                      const Color.fromARGB(255, 39, 0, 100),
                                     ),
                                   ),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      const FaIcon(FontAwesomeIcons.whatsapp),
+                                      const FaIcon(FontAwesomeIcons.linkedin),
                                       const SizedBox(width: 5.0),
                                       if (constraint.maxWidth > 300)
                                         const Text(
-                                          "WhatsApp",
+                                          "Linked In",
+                                          style: TextStyle(fontSize: 12.0),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 30.0),
+                            Center(
+                              child: Link(
+                                target: LinkTarget.self,
+                                uri: Uri.parse('https://www.facebook.com/'),
+                                builder: (context, followLink) => ElevatedButton(
+                                  onPressed: followLink,
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                      const Color.fromARGB(255, 40, 144, 236),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const FaIcon(FontAwesomeIcons.facebook),
+                                      const SizedBox(width: 5.0),
+                                      if (constraint.maxWidth > 300)
+                                        const Text(
+                                          "Facebook",
+                                          style: TextStyle(fontSize: 12.0),
+                                        ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 30.0),
+                            Center(
+                              child: Link(
+                                target: LinkTarget.self,
+                                uri: Uri.parse('https://github.com/'),
+                                builder: (context, followLink) => ElevatedButton(
+                                  onPressed: followLink,
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                      const Color.fromARGB(255, 243, 171, 4),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const FaIcon(
+                                        FontAwesomeIcons.github,
+                                        color: Colors.black,
+                                      ),
+                                      const SizedBox(width: 5.0),
+                                      if (constraint.maxWidth > 300)
+                                        const Text(
+                                          "Github",
                                           style: TextStyle(fontSize: 12.0),
                                         ),
                                     ],
@@ -281,42 +261,51 @@ class _MyFirstPageState extends State<MyFirstPage> {
 }
 
 class AcademicsPage extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
-  const AcademicsPage({Key? key});
+  const AcademicsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Academics"),
-      ),
-      body: const Center(
-        child: Text("Academics Page"),
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.popUntil(context, ModalRoute.withName('/'));
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Academics'),
+        ),
+        body: const Center(
+          child: Text('Academics Page'),
+        ),
       ),
     );
   }
 }
 
 class ProfilePage extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
-  const ProfilePage({Key? key});
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Profile"),
-      ),
-      body: const Center(
-        child: Text("Profile Page"),
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.popUntil(context, ModalRoute.withName('/'));
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Profile'),
+        ),
+        body: const Center(
+          child: Text('Profile Page'),
+        ),
       ),
     );
   }
 }
 
 class NavigationBar extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
-  const NavigationBar({Key? key});
+  const NavigationBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
