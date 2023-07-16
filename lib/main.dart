@@ -146,7 +146,7 @@ class _MyFirstPageState extends State<MyFirstPage> {
                       ),
                     ),
                     const Text(
-                      "Students of BSU",
+                      "Student of BSU",
                       style: TextStyle(
                         color: Color.fromARGB(255, 37, 227, 16),
                         fontWeight: FontWeight.bold,
